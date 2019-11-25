@@ -14,7 +14,7 @@ public class ListWork {
         return mImageResource;
     }
 
-    public String getText1() {
+    public String getJudul() {
         return mText1;
     }
 }

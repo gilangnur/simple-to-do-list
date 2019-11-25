@@ -18,8 +18,10 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.MyAdapterViewH
     private ArrayList<ListWork> mListItem;
     private OnItemClickListener mListener;
 
+
     public interface OnItemClickListener{
-        void onDeleteClick(int position);
+        //void onDeleteClick(int position);
+        void lihatItem(int position);
     }
 
     public WorkAdapter(ArrayList<ListWork> itemss_list){
@@ -41,7 +43,7 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.MyAdapterViewH
         ListWork currentItem = mListItem.get(position);
 
         holder.mImageView.setImageResource(currentItem.getImageResource());
-        holder.mTextView.setText(currentItem.getText1());
+        holder.mTextView.setText(currentItem.getJudul());
     }
 
     @Override
@@ -54,6 +56,8 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.MyAdapterViewH
         mListener = listener;
     }
 
+
+
     public static class MyAdapterViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView mImageView;
@@ -63,6 +67,7 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.MyAdapterViewH
             mImageView = itemView.findViewById(R.id.imageView);
             mTextView = itemView.findViewById(R.id.textView_judul);
 
+            /*
             mImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -70,6 +75,19 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.MyAdapterViewH
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION){
                             listener.onDeleteClick(position);
+                        }
+                    }
+                }
+            });
+
+             */
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(listener!=null){
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            listener.lihatItem(position);
                         }
                     }
                 }

@@ -72,10 +72,10 @@
 
                 <Button
                     android:id="@+id/button_add"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:gravity="end"
-                    android:background="@drawable/ic_add"/>
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_add"
+                    android:gravity="end" />
             </LinearLayout>
 
         </LinearLayout>

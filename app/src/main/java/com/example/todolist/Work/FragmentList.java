@@ -1,5 +1,6 @@
 package com.example.todolist.Work;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -15,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todolist.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -54,7 +59,7 @@ public class FragmentList extends Fragment {
     public void createList() {
         listItems = new ArrayList<>();
         listItems.add(new ListWork(R.drawable.ic_add, "Ubuntu"));
-        //listItems.add(new ListWork(R.drawable.ic_android, "Android"));
+        listItems.add(new ListWork(R.drawable.ic_add, "Android"));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -66,25 +71,31 @@ public class FragmentList extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
+
+
         mAdapter.setOnItemClickListener(new WorkAdapter.OnItemClickListener() {
-            fragmentManager = getActivity().getFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            public void onDeleteClick(int position) {
-                //Toast.makeText(getActivity(), "you deleted : ", Toast.LENGTH_LONG).show();
-                FragmentDetail lmfragment = new FragmentDetail();
-                //lmfragment.setNilai(getNilai());
-                fragmentTransaction.replace(R.id.list_work, lmfragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            public void lihatItem(int position) {
+                Toast.makeText(getContext(),"Test click "+listItems.get(position).getJudul(),Toast.LENGTH_LONG).show();
+
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
+                View mview = getLayoutInflater().inflate(R.layout.dialog_item,null);
+                TextView judul = (TextView)mview.findViewById(R.id.textView_judul);
+                TextView deskripsi = (TextView)mview.findViewById(R.id.textView_deskripsi);
+                ImageView gambar = (ImageView)mview.findViewById(R.id.image_work);
+
+                //isi
+                judul.setText(listItems.get(position).getJudul());
+                gambar.setImageResource(listItems.get(position).getImageResource());
+
+
+                mBuilder.setView(mview);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
             }
 
-            public void onClick(View v) {
-                FragmentDetail lmfragment = new FragmentDetail();
-                lmfragment.setNilai(getNilai());
-                fragmentTransaction.replace(R.id.ui_container, lmfragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
+
         });
     }
 }
