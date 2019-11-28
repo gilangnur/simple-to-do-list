@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">ToDoList</string>
+    <string name="app_name">Daily Dose</string>
+    <string name="tambahkan_kategori_baru">Tambahkan kategori baru</string>
+    <string name="action_share">Share</string>
+    <string name="action_upload">Upload</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_print">Print</string>
+    <string name="set_greeting_name">Set greeting name</string>
 </resources>

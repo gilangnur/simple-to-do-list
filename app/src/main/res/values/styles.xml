@@ -1,11 +1,32 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="ThemeOverlay.MaterialComponents.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/primaryLightColor</item>
+    </style>
+
+    <style name="ActionItem">
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:drawablePadding">@dimen/drawable_padding</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/normal_padding</item>
+    </style>
+
+    <style name="Bold" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:fontFamily">@font/geomanist_bold</item>
+    </style>
+
+    <style name="Medium" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:fontFamily">@font/geomanist_medium</item>
+    </style>
+
+
+    <style name="Regular" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:fontFamily">@font/geomanist_regular</item>
     </style>
 
 </resources>
