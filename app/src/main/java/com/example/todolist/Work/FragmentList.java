@@ -30,7 +30,15 @@ public class FragmentList extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
 
     private ArrayList<ListWork> listItems;
+    public String jumlah;
 
+    public String getJumlah() {
+        return jumlah;
+    }
+
+    public void setJumlah(String jumlah) {
+        this.jumlah = jumlah;
+    }
 
     public FragmentList() {
         // Required empty public constructor
@@ -54,6 +62,7 @@ public class FragmentList extends Fragment {
 
         createList();
         buildRecyclerView();
+        setJumlah(String.valueOf(listItems.size()));
     }
 
     public void createList() {

@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.todolist.R;
@@ -17,6 +18,7 @@ public class WorkActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
 
     private Button buatWork;
+    public TextView textView_jumlah;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,11 @@ public class WorkActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         buatWork = (Button)findViewById(R.id.button_add);
+        textView_jumlah = (TextView)findViewById(R.id.textView_jumlah);
+
+        FragmentList fragmentList = new FragmentList();
+        textView_jumlah.setText(fragmentList.getJumlah());
+
 
         buatWork.setOnClickListener(new View.OnClickListener() {
             @Override
