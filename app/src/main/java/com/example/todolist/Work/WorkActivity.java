@@ -12,9 +12,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.todolist.AddEvent;
 import com.example.todolist.R;
 
-public class WorkActivity extends AppCompatActivity {
+public class WorkActivity extends AppCompatActivity implements View.OnClickListener{
 
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
@@ -38,26 +39,28 @@ public class WorkActivity extends AppCompatActivity {
         //getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
 
         buatWork = (Button)findViewById(R.id.button_add);
-        textView_jumlah = (TextView)findViewById(R.id.textView_jumlah);
+        buatWork.setOnClickListener(this);
 
-        FragmentList fragmentList = new FragmentList();
-        textView_jumlah.setText(fragmentList.getJumlah());
-
-
-        buatWork.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(WorkActivity.this,"buat pengingat", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        fragmentManager = getFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction = getFragmentManager().beginTransaction();
         FragmentList newFragment = new FragmentList();
+
         fragmentTransaction.add(R.id.list_work, newFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.button_add) {
+            Toast.makeText(WorkActivity.this,"buat pengingat", Toast.LENGTH_LONG).show();
+
+            fragmentTransaction = getFragmentManager().beginTransaction();
+            AddEvent addFragment = new AddEvent();
+
+            fragmentTransaction.replace(R.id.list_work, addFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
+    }
 }
