@@ -55,19 +55,22 @@ public class AddEvent extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        inputJudul = (EditText) getActivity().findViewById(R.id.inputJudul);
-        inputDeskripsi = (EditText) getActivity().findViewById(R.id.inputDeskripsi);
-        btnDeadlineData = (Button) getActivity().findViewById(R.id.btnDeadlineDate);
-        btnAddImage = (Button) getActivity().findViewById(R.id.btnAddImage);
-        txtDeadlineDate = (TextView) getActivity().findViewById(R.id.txtDeadlineDate);
+        return inflater.inflate(R.layout.fragment_add_event, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        inputJudul = (EditText) view.findViewById(R.id.inputJudul);
+        inputDeskripsi = (EditText) view.findViewById(R.id.inputDeskripsi);
+        btnDeadlineData = (Button) view.findViewById(R.id.btnDeadlineDate);
+        btnAddImage = (Button) view.findViewById(R.id.btnAddImage);
+        txtDeadlineDate = (TextView) view.findViewById(R.id.txtDeadlineDate);
         mNotifyManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         btnDeadlineData.setOnClickListener(this);
         btnAddImage.setOnClickListener(this);
-
-        return inflater.inflate(R.layout.fragment_add_event, container, false);
+        super.onViewCreated(view, savedInstanceState);
     }
-
 
     @Override
     public void onClick(View view) {
@@ -79,7 +82,7 @@ public class AddEvent extends Fragment implements View.OnClickListener {
                 mDay = c.get(Calendar.DAY_OF_MONTH);
 
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
@@ -88,7 +91,7 @@ public class AddEvent extends Fragment implements View.OnClickListener {
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
-                sendNotification(mYear, mMonth, mDay);
+//                sendNotification(mYear, mMonth, mDay);
                 break;
             case R.id.btnAddImage:
                 Intent intent = new Intent();
@@ -100,32 +103,32 @@ public class AddEvent extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void sendNotification(int mYear, int mMonth, int mDay){
-        String tahun = String.valueOf(mYear);
-        String bulan = String.valueOf(mMonth);
-        String hari = String.valueOf(mDay);
-        notificationManagerCompat = NotificationManagerCompat.from(getContext());
-        Intent intent = new Intent(getContext(), MainActivity.class);
-        PendingIntent contenIntent = PendingIntent.getActivity(getContext(), 0, intent, 0);
-        Intent broadcastIntent = new Intent(getContext(), NotificationReceiver.class);
-        PendingIntent actionIntent = PendingIntent.getActivity(getContext(),
-                0,
-                broadcastIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification notification = new NotificationCompat.Builder(getContext(), app.CHANNEL_2_ID)
-//                .setSmallIcon(R.drawable.ic_android)
-                .setContentTitle("Deadline Set!")
-                .setContentText("Deadline Date : " + hari + "/" + bulan+ "/" + tahun)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .setContentIntent(contenIntent)
-                .setAutoCancel(true)
-                .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setOnlyAlertOnce(true)
-                .addAction(R.mipmap.ic_launcher, "Toast", actionIntent)
-                .build();
-        notificationManagerCompat.notify(1, notification);
-
-    }
+//    public void sendNotification(int mYear, int mMonth, int mDay){
+//        String tahun = String.valueOf(mYear);
+//        String bulan = String.valueOf(mMonth);
+//        String hari = String.valueOf(mDay);
+//        notificationManagerCompat = NotificationManagerCompat.from(getContext());
+//        Intent intent = new Intent(getContext(), MainActivity.class);
+//        PendingIntent contenIntent = PendingIntent.getActivity(getContext(), 0, intent, 0);
+//        Intent broadcastIntent = new Intent(getContext(), NotificationReceiver.class);
+//        PendingIntent actionIntent = PendingIntent.getActivity(getContext(),
+//                0,
+//                broadcastIntent,
+//                PendingIntent.FLAG_UPDATE_CURRENT);
+//        Notification notification = new NotificationCompat.Builder(getContext(), app.CHANNEL_2_ID)
+////                .setSmallIcon(R.drawable.ic_android)
+//                .setContentTitle("Deadline Set!")
+//                .setContentText("Deadline Date : " + hari + "/" + bulan+ "/" + tahun)
+//                .setPriority(NotificationCompat.PRIORITY_HIGH)
+//                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+//                .setContentIntent(contenIntent)
+//                .setAutoCancel(true)
+//                .setDefaults(NotificationCompat.DEFAULT_ALL)
+//                .setOnlyAlertOnce(true)
+//                .addAction(R.mipmap.ic_launcher, "Toast", actionIntent)
+//                .build();
+//        notificationManagerCompat.notify(1, notification);
+//
+//    }
 
 }
