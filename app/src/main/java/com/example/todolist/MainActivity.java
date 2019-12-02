@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -55,7 +56,6 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.action_change_preference: {
                 showBottomSheet(item);
-                Log.d("LOG_TEST", "onOptionsItemSelected: ");
                 break;
             }
         }
@@ -70,6 +70,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(String item) {
-        Log.d("LOG", "onItemClick: ");
+
     }
 }

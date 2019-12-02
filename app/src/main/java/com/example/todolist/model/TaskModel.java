@@ -10,6 +10,15 @@ public class TaskModel {
     private Uri image;
     private Date deadLine;
 
+    public TaskModel(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
+    public TaskModel() {
+
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -32,6 +41,10 @@ public class TaskModel {
 
     public String getDescription() {
         return this.description;
+    }
+
+    public Uri getImage() {
+        return image;
     }
 
     public Date getDeadLine() {

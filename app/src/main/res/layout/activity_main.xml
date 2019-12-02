@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -68,15 +69,15 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_addCategories"
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-        app:backgroundTint="@android:color/holo_orange_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
+        android:text="Add"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        app:backgroundTint="@android:color/holo_orange_dark"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_task"
-        android:text="Add"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_task" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -95,6 +96,5 @@
             android:layout_height="wrap_content"/>
 
     </androidx.core.widget.NestedScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

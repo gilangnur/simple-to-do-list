@@ -5,7 +5,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.todolist.R;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +24,7 @@ public class CategoriesViewHolder extends RecyclerView.ViewHolder {
     public TextView getTvTitle() {
         return this.tvTitle;
     }
+
 
     public ImageView getIvIcon() {
         return this.ivIcon;
