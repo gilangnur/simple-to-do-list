@@ -2,6 +2,9 @@ package com.example.todolist;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +12,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
@@ -33,6 +38,8 @@ public class AddEvent extends Fragment implements View.OnClickListener {
     private int mYear,mMonth,mDay;
     private ImageView img;
     public static final int PICK_IMAGE = 1000;
+    private NotificationManagerCompat notificationManagerCompat;
+    private NotificationManager mNotifyManager;
 
     public AddEvent() {
 
@@ -53,6 +60,7 @@ public class AddEvent extends Fragment implements View.OnClickListener {
         btnDeadlineData = (Button) getActivity().findViewById(R.id.btnDeadlineDate);
         btnAddImage = (Button) getActivity().findViewById(R.id.btnAddImage);
         txtDeadlineDate = (TextView) getActivity().findViewById(R.id.txtDeadlineDate);
+        mNotifyManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         btnDeadlineData.setOnClickListener(this);
         btnAddImage.setOnClickListener(this);
@@ -80,21 +88,44 @@ public class AddEvent extends Fragment implements View.OnClickListener {
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
+                sendNotification(mYear, mMonth, mDay);
                 break;
             case R.id.btnAddImage:
-                Intent intentImage = new Intent(Intent.ACTION_PICK);
-                intentImage.setType("image/*");
-                startActivityForResult(PICK_IMAGE, intentImage);
+                Intent intent = new Intent();
+                intent.setAction(android.content.Intent.ACTION_VIEW);
+                intent.setType("image/*");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
                 break;
         }
     }
 
-    private void startActivityForResult(int pickImage, Intent data) {
-        switch(pickImage) {
-            case PICK_IMAGE:
-                img.setImageURI(data.getData());
-                break;
-        }
+    public void sendNotification(int mYear, int mMonth, int mDay){
+        String tahun = String.valueOf(mYear);
+        String bulan = String.valueOf(mMonth);
+        String hari = String.valueOf(mDay);
+        notificationManagerCompat = NotificationManagerCompat.from(getContext());
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        PendingIntent contenIntent = PendingIntent.getActivity(getContext(), 0, intent, 0);
+        Intent broadcastIntent = new Intent(getContext(), NotificationReceiver.class);
+        PendingIntent actionIntent = PendingIntent.getActivity(getContext(),
+                0,
+                broadcastIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        Notification notification = new NotificationCompat.Builder(getContext(), app.CHANNEL_2_ID)
+//                .setSmallIcon(R.drawable.ic_android)
+                .setContentTitle("Deadline Set!")
+                .setContentText("Deadline Date : " + hari + "/" + bulan+ "/" + tahun)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .setContentIntent(contenIntent)
+                .setAutoCancel(true)
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setOnlyAlertOnce(true)
+                .addAction(R.mipmap.ic_launcher, "Toast", actionIntent)
+                .build();
+        notificationManagerCompat.notify(1, notification);
+
     }
 
 }
