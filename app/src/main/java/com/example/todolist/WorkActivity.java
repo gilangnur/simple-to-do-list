@@ -1,9 +1,8 @@
-package com.example.todolist.Work;
+package com.example.todolist;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -11,9 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.todolist.AddEvent;
-import com.example.todolist.R;
 
 public class WorkActivity extends AppCompatActivity implements View.OnClickListener{
 

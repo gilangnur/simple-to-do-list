@@ -1,4 +1,4 @@
-package com.example.todolist.Work;
+package com.example.todolist;
 
 public class ListWork {
     private int mImageResource;

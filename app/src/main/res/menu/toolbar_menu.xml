@@ -11,5 +11,12 @@
             android:title="Change Preference"
             app:showAsAction="never"
             />
+
+        <item
+            android:id="@+id/action_refresh"
+            android:title="Refresh List"
+            app:showAsAction="never"
+        />
+
     </menu>
 

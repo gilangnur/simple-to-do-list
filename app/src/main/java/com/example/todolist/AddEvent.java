@@ -22,16 +22,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.Calendar;
 
 public class AddEvent extends Fragment implements View.OnClickListener {
 
-    private EditText inputJudul, inputDeskripsi;
+    private TextInputLayout inputJudul, inputDeskripsi;
     private Button btnDeadlineData, btnAddImage;
     private TextView txtDeadlineDate;
-    private Calendar c;
-    private DatePickerDialog dpd;
-    private int mYear,mMonth,mDay;
+    private Calendar calendar;
+    private DatePickerDialog datePickerDialog;
+    private int mYear, mMonth, mDay;
     private ImageView img;
     public static final int PICK_IMAGE = 1000;
 
@@ -40,41 +42,46 @@ public class AddEvent extends Fragment implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        ;
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        inputJudul = (EditText) getActivity().findViewById(R.id.inputJudul);
-        inputDeskripsi = (EditText) getActivity().findViewById(R.id.inputDeskripsi);
-        btnDeadlineData = (Button) getActivity().findViewById(R.id.btnDeadlineDate);
-        btnAddImage = (Button) getActivity().findViewById(R.id.btnAddImage);
-        txtDeadlineDate = (TextView) getActivity().findViewById(R.id.txtDeadlineDate);
+        View view = inflater.inflate(R.layout.fragment_add_event, container, false);
 
-        //btnDeadlineData.setOnClickListener(this);
-        //btnAddImage.setOnClickListener(this);
+        calendar = Calendar.getInstance();
+        mYear = calendar.get(Calendar.YEAR);
+        mMonth = calendar.get(Calendar.MONTH);
+        mDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-        return inflater.inflate(R.layout.fragment_add_event, container, false);
+        inputJudul =  view.findViewById(R.id.inputJudul);
+        inputDeskripsi = view.findViewById(R.id.inputDeskripsi);
+        btnAddImage = (Button) view.findViewById(R.id.btnAddImage);
+
+        txtDeadlineDate = (TextView) view.findViewById(R.id.txtDeadlineDate);
+        btnDeadlineData = (Button) view.findViewById(R.id.btnDeadlineDate);
+
+        btnDeadlineData.setOnClickListener(this);
+        btnAddImage.setOnClickListener(this);
+
+        return view;
+
     }
 
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.btnDeadlineDate:
-                final Calendar c = Calendar.getInstance();
-                mYear = c.get(Calendar.YEAR);
-                mMonth = c.get(Calendar.MONTH);
-                mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
                         new DatePickerDialog.OnDateSetListener() {
-
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 txtDeadlineDate.setText(dayOfMonth + "/" + (monthOfYear) + "/" + year);
@@ -91,11 +98,12 @@ public class AddEvent extends Fragment implements View.OnClickListener {
     }
 
     private void startActivityForResult(int pickImage, Intent data) {
-        switch(pickImage) {
+        switch (pickImage) {
             case PICK_IMAGE:
                 img.setImageURI(data.getData());
                 break;
         }
     }
+
 
 }

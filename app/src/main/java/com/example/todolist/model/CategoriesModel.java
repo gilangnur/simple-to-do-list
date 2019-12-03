@@ -8,8 +8,9 @@ public class CategoriesModel {
     private String categoryName;
     private ArrayList<TaskModel> tasks;
 
-    public CategoriesModel(String categoryName) {
+    public CategoriesModel(String categoryName, ArrayList<TaskModel> tasks) {
         this.categoryName = categoryName;
+        this.tasks = tasks;
     }
 
     public void setCategoryName() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,85 +8,108 @@
     tools:context=".MainActivity"
     android:padding="20dp">
 
-    <TextView
-        android:id="@+id/txtJudul"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:text="Judul" />
-
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/inputJudul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Masukkan Judul" />
+        android:hint="@string/give_us_your_activity_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="64dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputDeskripsi"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/describe_your_activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputJudul"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            android:inputType="textMultiLine"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:lines="6"
+            android:gravity="top|left"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDeadlineDate"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="@string/pick_deadline_date"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        app:backgroundTint="@android:color/holo_orange_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.088" />
 
     <TextView
-        android:id="@+id/txtDeadline"
-        android:layout_width="match_parent"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:text="Deadline"
-        android:paddingTop="20dp"/>
+        android:text="Activity Deadline"
+        android:textSize="24sp"
+        android:theme="@style/Bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDeadlineDate"
+        app:layout_constraintStart_toStartOf="@+id/inputDeskripsi"
+        app:layout_constraintTop_toTopOf="@+id/txtDeadlineDate" />
 
-    <Button
-        android:id="@+id/btnDeadlineDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-        android:text="Pick Deadline Date" />
 
     <TextView
         android:id="@+id/txtDeadlineDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Date"
-        android:textAlignment="center" />
-
-    <TextView
-        android:id="@+id/txtDeskripsi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:text="Deskripsi"
-        android:paddingTop="20dp"/>
-
-    <EditText
-        android:id="@+id/inputDeskripsi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Deskripsi" />
-
-    <TextView
-        android:id="@+id/txtMaxWords"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:text="Max 150 Words" />
-
-    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="20dp">
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24sp"
+        android:text="00/00/00"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:theme="@style/Regular"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/inputDeskripsi" />
 
-        <Button
-            android:id="@+id/btnAddImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Image"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Button" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddImage"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="@string/add_image"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        app:backgroundTint="@android:color/holo_orange_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDeadlineDate"
+        app:layout_constraintVertical_bias="0.079" />
 
-        <ImageView
-            android:id="@+id/imgAddImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView
+        android:layout_marginTop="8dp"
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnAddImage"
+        app:layout_constraintStart_toStartOf="@+id/btnAddImage"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddImage"
+        app:srcCompat="@android:color/darker_gray" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

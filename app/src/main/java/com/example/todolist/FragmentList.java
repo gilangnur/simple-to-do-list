@@ -1,4 +1,4 @@
-package com.example.todolist.Work;
+package com.example.todolist;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -98,16 +98,7 @@ public class FragmentList extends Fragment {
                 Log.d("TAG_CHECK", "lihatItem: " + dialog);
                 dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
                 dialog.show();
-//                  AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity().getApplicationContext());
-//                  View mview = getActivity().getLayoutInflater().inflate(R.layout.dialog_item,null);
-//
-//                  TextView judul = mview.findViewById(R.id.textView_judul);
-//                  judul.setText(listItems.get(position).getTitle());
-//
-//
-//                  mBuilder.setView(mview);
-//                  AlertDialog dialog = mBuilder.create();
-//                  dialog.show();
+
             }
 
 

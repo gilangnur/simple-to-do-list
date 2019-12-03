@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import com.example.todolist.R;
-import com.example.todolist.Work.WorkActivity;
+import com.example.todolist.WorkActivity;
 import com.example.todolist.model.CategoriesModel;
 import com.example.todolist.model.TaskModel;
 import com.example.todolist.viewHolder.CategoriesViewHolder;
@@ -39,11 +39,12 @@ public class CategoriesViewAdapter extends RecyclerView.Adapter<CategoriesViewHo
             CategoriesModel model = list.get(position);
             if (model != null) {
                 holder.getTvTitle().setText(model.getCategoryName());
-                holder.getTvTitle().setOnClickListener(new View.OnClickListener() {
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         ArrayList<TaskModel> taskModels = list.get(position).getTasks();
                         Intent intent = new Intent(v.getContext(), WorkActivity.class);
+                        intent.putExtra("POSITION", position);
                         intent.putExtra("CATEGORY", String.valueOf(holder.getTvTitle().getText()));
                         intent.putExtra("WORK_LIST", taskModels);
                         v.getContext().startActivity(intent);
