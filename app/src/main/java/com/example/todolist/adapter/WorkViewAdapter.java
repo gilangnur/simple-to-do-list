@@ -1,6 +1,7 @@
 package com.example.todolist.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class WorkViewAdapter extends RecyclerView.Adapter<WorkViewHolder>{
                 holder.getTitle().setText(taskModel.getTitle());
                 holder.getDescription().setText(taskModel.getDescription());
                 holder.getDeadline().setText(taskModel.getDeadLine());
+                holder.getWorkImage().setImageURI(Uri.parse(taskModel.getImage()));
                 holder.itemView.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {

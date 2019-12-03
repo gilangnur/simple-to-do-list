@@ -102,7 +102,7 @@ public class AddEvent extends Fragment implements View.OnClickListener {
         inputDeskripsi = view.findViewById(R.id.inputDeskripsi);
         btnAddImage = (Button) view.findViewById(R.id.btnAddImage);
         addTask = view.findViewById(R.id.btnAddNewTask);
-        imgNote = view.findViewById(R.id.imageView4);
+        //imgNote = view.findViewById(R.id.imageView4);
 
         txtDeadlineDate = (TextView) view.findViewById(R.id.txtDeadlineDate);
         btnDeadlineData = (Button) view.findViewById(R.id.btnDeadlineDate);
@@ -140,11 +140,11 @@ public class AddEvent extends Fragment implements View.OnClickListener {
                 taskModel.setTitle(String.valueOf(inputJudul.getEditText().getText()));
                 taskModel.setDescription(String.valueOf(inputDeskripsi.getEditText().getText()));
                 taskModel.setDeadLine(txtDeadlineDate.getText().toString());
-//                taskModel.setImage(image);
+                taskModel.setImage(image.toString());
                 if (taskModel.getTitle() != null &&
                         taskModel.getDeadLine() != null &&
                         taskModel.getDescription() != null
-//                  && taskModel.getImage() != null
+                        && taskModel.getImage() != null
                 ) {
                     categoriesModels.get(postion).getTasks().add(taskModel);
                     saveList();
@@ -159,7 +159,7 @@ public class AddEvent extends Fragment implements View.OnClickListener {
 
                 } else {
                     Toast.makeText(getActivity().getApplicationContext()
-                            , "Saved"
+                            , "Makan"
                             , Toast.LENGTH_LONG).show();
                 }
         }
@@ -189,7 +189,8 @@ public class AddEvent extends Fragment implements View.OnClickListener {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == PICK_IMAGE) {
-            imgNote.setImageURI(data.getData());
+            //imgNote.setImageURI(data.getData());
+            image = data.getData();
         }
     }
 

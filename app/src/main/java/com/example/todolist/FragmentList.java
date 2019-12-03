@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -111,7 +112,7 @@ public class FragmentList extends Fragment {
                 judul.setText(taskModels.get(position).getTitle());
                 deadLine.setText(taskModels.get(position).getDeadLine());
                 description.setText(taskModels.get(position).getDescription());
-
+                imageView.setImageURI(Uri.parse(taskModels.get(position).getImage()));
 
                 mBuilder.setView(mView);
                 AlertDialog dialog = mBuilder.create();

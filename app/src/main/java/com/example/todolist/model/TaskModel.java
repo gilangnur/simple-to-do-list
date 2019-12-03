@@ -7,7 +7,7 @@ import java.util.Date;
 public class TaskModel {
     private String title;
     private String description;
-    private Uri image;
+    private String image;
     private String deadLine;
 
     public TaskModel(String title, String description) {
@@ -27,7 +27,7 @@ public class TaskModel {
         this.description = description;
     }
 
-    public void setImage(Uri image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -43,7 +43,7 @@ public class TaskModel {
         return this.description;
     }
 
-    public Uri getImage() {
+    public String getImage() {
         return image;
     }
 
