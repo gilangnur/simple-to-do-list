@@ -20,7 +20,6 @@ public class WorkActivity extends AppCompatActivity implements View.OnClickListe
     public TextView textView_jumlah;
 
 
-    //@SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +31,7 @@ public class WorkActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(myToolbar);
 
         getSupportActionBar().setTitle(title);
-        //getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         buatWork = (Button)findViewById(R.id.button_add);
         buatWork.setOnClickListener(this);
