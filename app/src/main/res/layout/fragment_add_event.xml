@@ -8,108 +8,139 @@
     tools:context=".MainActivity"
     android:padding="20dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:id="@+id/inputJudul"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/give_us_your_activity_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-4dp"
+        tools:layout_editor_absoluteY="139dp">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputDeskripsi"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/describe_your_activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputJudul"
-        android:layout_marginTop="16dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="128dp"
-            android:inputType="textMultiLine"
-            android:overScrollMode="always"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical"
-            android:lines="6"
-            android:gravity="top|left"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnDeadlineDate"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:text="@string/pick_deadline_date"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-        app:backgroundTint="@android:color/holo_orange_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.088" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/inputJudul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/give_us_your_activity_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Activity Deadline"
-        android:textSize="24sp"
-        android:theme="@style/Bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtDeadlineDate"
-        app:layout_constraintStart_toStartOf="@+id/inputDeskripsi"
-        app:layout_constraintTop_toTopOf="@+id/txtDeadlineDate" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputDeskripsi"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/describe_your_activity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputJudul"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:inputType="textMultiLine"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:lines="6"
+                    android:gravity="top|left"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:id="@+id/txtDeadlineDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24sp"
-        android:text="00/00/00"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:theme="@style/Regular"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/inputDeskripsi" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDeadlineDate"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:text="@string/pick_deadline_date"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                app:backgroundTint="@android:color/holo_orange_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintVertical_bias="0.088" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAddImage"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:text="@string/add_image"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-        app:backgroundTint="@android:color/holo_orange_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDeadlineDate"
-        app:layout_constraintVertical_bias="0.079" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activity Deadline"
+                android:textSize="24sp"
+                android:theme="@style/Bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtDeadlineDate"
+                app:layout_constraintStart_toStartOf="@+id/inputDeskripsi"
+                app:layout_constraintTop_toTopOf="@+id/txtDeadlineDate" />
 
-    <ImageView
-        android:layout_marginTop="8dp"
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintEnd_toEndOf="@+id/btnAddImage"
-        app:layout_constraintStart_toStartOf="@+id/btnAddImage"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddImage"
-        app:srcCompat="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/txtDeadlineDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="24sp"
+                android:text="00/00/00"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:theme="@style/Regular"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/inputDeskripsi" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddImage"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:text="@string/add_image"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                app:backgroundTint="@android:color/holo_orange_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnDeadlineDate"
+                app:layout_constraintVertical_bias="0.079" />
+
+            <ImageView
+                android:layout_marginTop="8dp"
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:layout_constraintEnd_toEndOf="@+id/btnAddImage"
+                app:layout_constraintStart_toStartOf="@+id/btnAddImage"
+                app:layout_constraintTop_toBottomOf="@+id/btnAddImage"
+                app:srcCompat="@android:color/darker_gray" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddNewTask"
+                android:layout_marginTop="24dp"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:text="@string/add_new_task"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+                app:backgroundTint="@android:color/holo_orange_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                app:layout_constraintVertical_bias="0.079" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

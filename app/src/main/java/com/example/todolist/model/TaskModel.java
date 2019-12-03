@@ -8,7 +8,7 @@ public class TaskModel {
     private String title;
     private String description;
     private Uri image;
-    private Date deadLine;
+    private String deadLine;
 
     public TaskModel(String title, String description) {
         this.title = title;
@@ -31,7 +31,7 @@ public class TaskModel {
         this.image = image;
     }
 
-    public void setDeadLine(Date deadLine) {
+    public void setDeadLine(String deadLine) {
         this.deadLine = deadLine;
     }
 
@@ -47,7 +47,7 @@ public class TaskModel {
         return image;
     }
 
-    public Date getDeadLine() {
+    public String getDeadLine() {
         return this.deadLine;
     }
 }

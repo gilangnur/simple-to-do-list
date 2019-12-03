@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class WorkViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView workImage;
-    private TextView title, description;
+    private TextView title, description, deadline;
 
     public WorkViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -20,6 +20,8 @@ public class WorkViewHolder extends RecyclerView.ViewHolder {
             workImage = itemView.findViewById(R.id.imageView);
             title = itemView.findViewById(R.id.textView_judul);
             description = itemView.findViewById(R.id.textView_deskripsi);
+            deadline = itemView.findViewById(R.id.textView_deadline);
+
         }
     }
 
@@ -33,5 +35,9 @@ public class WorkViewHolder extends RecyclerView.ViewHolder {
 
     public TextView getDescription() {
         return description;
+    }
+
+    public TextView getDeadline() {
+        return deadline;
     }
 }

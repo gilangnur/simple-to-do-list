@@ -61,6 +61,7 @@ public class EditNameBottomSheet extends BottomSheetDialogFragment
             String givenString = String.valueOf(newName.getEditText().getText());
             preferenceEdit.putString(PERSON_NAME, givenString);
             preferenceEdit.apply();
+            this.dismiss();
         }
     }
 

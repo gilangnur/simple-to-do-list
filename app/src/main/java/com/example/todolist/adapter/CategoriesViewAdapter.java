@@ -10,6 +10,8 @@ import com.example.todolist.WorkActivity;
 import com.example.todolist.model.CategoriesModel;
 import com.example.todolist.model.TaskModel;
 import com.example.todolist.viewHolder.CategoriesViewHolder;
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,7 +48,12 @@ public class CategoriesViewAdapter extends RecyclerView.Adapter<CategoriesViewHo
                         Intent intent = new Intent(v.getContext(), WorkActivity.class);
                         intent.putExtra("POSITION", position);
                         intent.putExtra("CATEGORY", String.valueOf(holder.getTvTitle().getText()));
-                        intent.putExtra("WORK_LIST", taskModels);
+
+                        Gson gson = new Gson();
+                        String json = gson.toJson(taskModels);
+
+                        intent.putExtra("WORK_LIST", json);
+
                         v.getContext().startActivity(intent);
                         Toast toast = Toast.makeText(v.getContext(), holder.getTvTitle().getText().toString(), Toast.LENGTH_SHORT);
                         toast.show();

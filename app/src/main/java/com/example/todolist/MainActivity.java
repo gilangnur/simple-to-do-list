@@ -40,10 +40,11 @@ public class MainActivity extends AppCompatActivity
     final String PERSON_NAME = "PERSON_NAME";
     private String DEFAULT_NAME = "Buddy";
     final String LIST = "LIST";
+    private int jumlah = 0;
     private int workToDo = 0;
 
     private ArrayList<CategoriesModel> categoriesModels;
-    private TextView ownerName;
+    private TextView ownerName, task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +58,20 @@ public class MainActivity extends AppCompatActivity
         addCategories.setOnClickListener(this);
 
         ownerName = findViewById(R.id.tv_greetName);
+        task = findViewById(R.id.tv_task);
+
         sharedPreferences = getSharedPreferences(getApplication().toString(), Context.MODE_PRIVATE);
         String greetName = sharedPreferences.getString(PERSON_NAME, DEFAULT_NAME);
         ownerName.setText(greetName);
 
         loadData();
+        jumlah = countWork();
+        task.setText("ada " + jumlah + " pekerjaan menanti");
+
         recyclerView = this.findViewById(R.id.rv_categoriesFill);
         adapter = new CategoriesViewAdapter(categoriesModels);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-
 
     }
 
@@ -90,6 +95,9 @@ public class MainActivity extends AppCompatActivity
                 adapter = new CategoriesViewAdapter(categoriesModels);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+                sharedPreferences = getSharedPreferences(getApplication().toString(), Context.MODE_PRIVATE);
+                String greetName = sharedPreferences.getString(PERSON_NAME, DEFAULT_NAME);
+                ownerName.setText(greetName);
                 break;
             }
         }

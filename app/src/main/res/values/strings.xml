@@ -15,5 +15,6 @@
     <string name="describe_your_activity">Describe your activity</string>
     <string name="pick_deadline_date">Pick Deadline Date</string>
     <string name="add_image">Add Image</string>
+    <string name="add_new_task">Add New Task</string>
 
 </resources>
